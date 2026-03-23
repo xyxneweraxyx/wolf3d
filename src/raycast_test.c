@@ -4,7 +4,7 @@
 size_t raycast_1(setfml_t *setfml, void *userdata)
 {
     raycast_t *ray = (raycast_t *)setfml->userdata;
-    raycast_raycast(ray, setfml->window);
+    raycast_raycast(ray, setfml);
     return SETFML_SUCC;
 }
 
@@ -13,8 +13,9 @@ void modif(sfRectangleShape *col, col_data_t *data)
     int shade = (255 - data->distance * 25);
     shade = (shade < 0) ? 0 : shade;
     texture_t *texture = setfml_texturefromname(data->setfml, "water", false);
-    sfRectangleShape_setTexture(col, texture, sfFalse);
     sfRectangleShape_setFillColor(col, (sfColor){shade, shade, shade, 255});
+    if (texture)
+        sfRectangleShape_setTexture(col, texture->texture, sfFalse);
 }
 
 size_t handle_keys(setfml_t *setfml, void *userdata)
@@ -96,7 +97,7 @@ int main(void)
     raycast_t *raycast = raycast_create((char **)map, (ray_twod_t){15.5, 15.5});
     raycast->modification = &modif;
     setfml_t *setfml = setfml_ini(raycast);
-    //setfml_textureadd(setfml, "water", "./texture.png");
+    setfml_textureadd(setfml, "water", "./texture.png");
 
     setfml_windowcreate(setfml);
 
