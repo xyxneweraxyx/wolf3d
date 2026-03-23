@@ -28,7 +28,7 @@ size_t handle_keys(setfml_t *setfml, void *userdata)
 {
     raycast_t *ray = (raycast_t *)setfml->userdata;
     float speed = 0.02f;
-    float rot_speed = 0.25f;
+    float rot_speed = 0.5f;
 
     if (sfKeyboard_isKeyPressed(sfKeyZ)) {
         ray->origin.origin.x += cosf(ray->origin.degree * DEG_TO_RAD) * speed;
