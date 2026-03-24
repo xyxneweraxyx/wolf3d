@@ -25,8 +25,8 @@
     #include "./../libs/classhandler/include/classhandler.h"
 
     // Return codes
-    #define WOLF_FAIL 0
-    #define WOLF_SUCC 84
+    #define WOLF_SUCC 0
+    #define WOLF_FAIL 84
 
 // Typedefs
 
@@ -47,6 +47,8 @@ typedef struct wolf_s {
 
 // Functions
 
-
+int connect_callbacks(wolf_t *wolf);
+int destroy_return_int(int RET_CODE, wolf_t *wolf);
+void *destroy_return_null(wolf_t *wolf);
 
 #endif

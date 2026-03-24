@@ -60,44 +60,6 @@ char **create_map(void)
     return map;
 }
 
-// Même chose
-static void free_map(char **map)
-{
-    for (int i = 0; map[i]; i++)
-        free(map[i]);
-    free(map);
-}
-
-static int destroy_return_int(int RET_CODE, wolf_t *wolf)
-{
-    if (!wolf)
-        return RET_CODE;
-    if (wolf->buttonfml)
-        buttonfml_destroy(wolf->buttonfml);
-    if (wolf->setfml)
-        setfml_destroy(wolf->setfml);
-    if (wolf->map)
-        free_map(wolf->map);
-    if (wolf->alloc)
-        c_delete(wolf->alloc, true);
-    return RET_CODE;
-}
-
-static void *destroy_return_null(wolf_t *wolf)
-{
-    if (!wolf)
-        return NULL;
-    if (wolf->buttonfml)
-        buttonfml_destroy(wolf->buttonfml);
-    if (wolf->setfml)
-        setfml_destroy(wolf->setfml);
-    if (wolf->map)
-        free_map(wolf->map);
-    if (wolf->alloc)
-        c_delete(wolf->alloc, true);
-    return NULL;
-}
-
 static int ini_csfml_env(wolf_t *wolf)
 {
     setfml_t *setfml = NULL;
@@ -145,5 +107,9 @@ int main(void)
         return WOLF_FAIL;
     if (ini_csfml_env(wolf) == WOLF_FAIL)
         return WOLF_FAIL;
+    if (connect_callbacks(wolf) == WOLF_FAIL)
+        return WOLF_FAIL;
+    //setfml_windowcreate(wolf->setfml);
+    //setfml_windowstart(wolf->setfml);
     return destroy_return_int(WOLF_SUCC, wolf);
 }
