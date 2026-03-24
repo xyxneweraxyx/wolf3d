@@ -8,10 +8,8 @@
 #include "./../../include/wolf3d.h"
 #include "./callbacks.h"
 
-int connect_callbacks(wolf_t *wolf)
+int connect_keyboard(wolf_t *wolf)
 {
-    if (connect_raycasts(wolf) == WOLF_FAIL ||
-        connect_keyboard(wolf) == WOLF_FAIL)
-        return WOLF_FAIL;
+    
     return WOLF_SUCC;
 }

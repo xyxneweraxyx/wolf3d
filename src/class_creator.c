@@ -7,7 +7,7 @@
 
 #include "./../include/wolf3d.h"
 
-int create_players(wolf_t *wolf)
+static int create_players(wolf_t *wolf)
 {
     class_t *class = classhandler_classcreate(wolf->classhandler,
         sizeof(player_t), CLASS_PLAYERS);
@@ -29,10 +29,10 @@ int create_classes(wolf_t *wolf)
     classhandler_t *classhandler = classhandler_init();
 
     if (!classhandler)
-        return destroy_return_int(WOLF_FAIL, wolf);
+        return WOLF_FAIL;
     wolf->classhandler = classhandler;
     if (!classhandler ||
         create_players(wolf) == WOLF_FAIL)
-        return destroy_return_int(WOLF_FAIL, wolf);
+        return WOLF_FAIL;
     return WOLF_SUCC;
 }

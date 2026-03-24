@@ -12,5 +12,6 @@
 
 // Functions
 int connect_raycasts(wolf_t *wolf);
+int connect_keyboard(wolf_t *wolf);
 
 #endif

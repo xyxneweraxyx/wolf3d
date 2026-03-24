@@ -66,14 +66,14 @@ static int ini_csfml_env(wolf_t *wolf)
     buttonfml_t *buttonfml = NULL;
 
     if (!wolf)
-        return destroy_return_int(WOLF_FAIL, wolf);
+        return WOLF_FAIL;
     setfml = setfml_ini((void *)wolf);
     if (!setfml)
-        return destroy_return_int(WOLF_FAIL, wolf);
+        return WOLF_FAIL;
     wolf->setfml = setfml;
     buttonfml = buttonfml_ini(setfml);
     if (!buttonfml)
-        return destroy_return_int(WOLF_FAIL, wolf);
+        return WOLF_FAIL;
     wolf->buttonfml = buttonfml;
     return WOLF_SUCC;
 }
@@ -104,7 +104,7 @@ int main(void)
     if (ini_csfml_env(wolf) == WOLF_FAIL ||
         create_classes(wolf) == WOLF_FAIL ||
         connect_callbacks(wolf) == WOLF_FAIL)
-        return WOLF_FAIL;
+        return destroy_return_int(WOLF_FAIL, wolf);
     if (setfml_windowcreate(wolf->setfml) == (size_t)SETFML_FAIL)
         return destroy_return_int(WOLF_FAIL, wolf);
     setfml_windowstart(wolf->setfml);

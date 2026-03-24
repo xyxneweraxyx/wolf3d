@@ -101,6 +101,8 @@ static void draw_column(raycast_t *raycast, ray_exec_t *data,
     if (raycast->modification)
         raycast->modification(col,
             &(col_data_t){setfml, raycast, perp_dist, face_x, screen_x});
+    else
+        sfRectangleShape_setFillColor(col, (sfColor){255, 255, 255, 255});
     sfRectangleShape_setSize(col, (sfVector2f){1.0f, wall_height});
     sfRectangleShape_setPosition(col, (sfVector2f){col_x, col_y});
     sfRenderWindow_drawRectangleShape(setfml->window, col, NULL);
