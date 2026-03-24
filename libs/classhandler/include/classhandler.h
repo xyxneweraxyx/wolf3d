@@ -107,7 +107,7 @@ void classhandler_destroy(classhandler_t *classhandler);
 
 /*
 Creates a new class based on it's name and the size of it's data structure.
-Returns CLASSHANDLER_SUCC or CLASSHANDLER_FAIL.
+Returns the created class, or NULL.
 */
 class_t *classhandler_classcreate(classhandler_t *classhandler,
     size_t byte_size, const char *name);
@@ -124,7 +124,7 @@ size_t classhandler_classdestroy(classhandler_t *classhandler,
 
 /*
 Creates and storess a new class entity.
-Returns CLASSHANDLER_SUCC or CLASSHANDLER_FAIL.
+Returns the entity created, or NULL.
 */
 entity_t *classhandler_entitycreate(classhandler_t *classhandler,
     const char *classname, const char *entityname);
@@ -141,6 +141,7 @@ size_t classhandler_entitydestroy(classhandler_t *classhandler,
 
 /*
 Fetches an entity based on its class and name.
+If entityname is NULL, will return the first entity of the class, if any.
 Returns a pointer to the entity, or NULL.
 */
 entity_t *classhandler_fetchentityname(classhandler_t *classhandler,

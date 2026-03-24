@@ -9,7 +9,7 @@
 
 // Bug notable : Si render.degree n'est pas un multiple de degree_add, alors la dernière exécution
 // (supposément le dernier render tout a droite) est skip (a cause de la condition de la boucle principale). A fix potentiellement si problèmes.
-raycast_t *raycast_create(char **map, ray_twod_t origin)
+raycast_t *raycast_create(char **map, ray_twod_t *origin)
 {
     c_alloc_t *alloc = c_ini((uint16_t)10);
     raycast_t *raycast = NULL;
@@ -23,7 +23,8 @@ raycast_t *raycast_create(char **map, ray_twod_t origin)
     raycast->origin.degree = 0;
     raycast->origin.wall = '1';
     raycast->origin.map = map;
-    raycast->origin.origin = origin;
+    raycast->origin.origin.x = origin->x;
+    raycast->origin.origin.y = origin->y;
     raycast->render.degree = 70;
     raycast->render.distance = 1;
     raycast->render.wall_height = 1;

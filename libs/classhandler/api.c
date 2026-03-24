@@ -66,6 +66,8 @@ entity_t *classhandler_fetchentityname(classhandler_t *classhandler,
     class_t *class = find_class_by_name(classhandler, classname, false);
     entity_t *entity = find_entity_by_name(class, entityname, false);
 
+    if (!entityname && class->entities->head)
+        return (entity_t *)class->entities->head->data;
     return entity;
 }
 

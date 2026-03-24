@@ -20,7 +20,7 @@ size_t player_setdefault(entity_t *entity)
     player->dmg = PLAYER_DEFAULT_DMG;
     player->move_speed = PLAYER_DEFAULT_MOVE_SPEED;
     player->jump_power = PLAYER_DEFAULT_JUMP_POWER;
-    player->pos = (player_pos_t){0, 0, 0};
+    player->pos = (player_pos_t){1, 0, 1};
     player->state = PLAYER_IDLE;
     return (size_t)0;
 }

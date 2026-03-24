@@ -25,6 +25,8 @@ int destroy_return_int(int RET_CODE, wolf_t *wolf)
         setfml_destroy(wolf->setfml);
     if (wolf->map)
         free_map(wolf->map);
+    if (wolf->classhandler)
+        classhandler_destroy(wolf->classhandler);
     if (wolf->alloc)
         c_delete(wolf->alloc, true);
     return RET_CODE;
@@ -40,6 +42,8 @@ void *destroy_return_null(wolf_t *wolf)
         setfml_destroy(wolf->setfml);
     if (wolf->map)
         free_map(wolf->map);
+    if (wolf->classhandler)
+        classhandler_destroy(wolf->classhandler);
     if (wolf->alloc)
         c_delete(wolf->alloc, true);
     return NULL;

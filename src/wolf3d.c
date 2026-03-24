@@ -101,9 +101,9 @@ int main(void)
 
     if (!wolf)
         return WOLF_FAIL;
-    if (ini_csfml_env(wolf) == WOLF_FAIL)
-        return WOLF_FAIL;
-    if (connect_callbacks(wolf) == WOLF_FAIL)
+    if (ini_csfml_env(wolf) == WOLF_FAIL ||
+        create_classes(wolf) == WOLF_FAIL ||
+        connect_callbacks(wolf) == WOLF_FAIL)
         return WOLF_FAIL;
     if (setfml_windowcreate(wolf->setfml) == (size_t)SETFML_FAIL)
         return destroy_return_int(WOLF_FAIL, wolf);

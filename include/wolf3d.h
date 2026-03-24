@@ -24,9 +24,22 @@
     #include "./../libs/raycaster/include/raycaster.h"
     #include "./../libs/classhandler/include/classhandler.h"
 
+    // Classes
+    #include "./../classes/player/include/player.h"
+    #include "./../classes/enemy/include/enemy.h"
+
     // Return codes
     #define WOLF_SUCC 0
     #define WOLF_FAIL 84
+
+    // Buffer lengths
+    #define BUFF_LEN_NAME 32
+
+    // Default parameter values
+    #define PARAMS_DEFAULT_NAME "Jean marc" // jai que ca a foutre
+
+    // Classes definition
+    #define CLASS_PLAYERS "players"
 
 // Typedefs
 
@@ -39,10 +52,13 @@ typedef enum gamestate_e {
 
 typedef struct wolf_s {
     c_alloc_t *alloc;
+    classhandler_t *classhandler;
     setfml_t *setfml;
     buttonfml_t *buttonfml;
     char **map;
     gamestate_t state;
+    params_t params;
+    raycast_t *raycast;
 } wolf_t;
 
 // Functions
@@ -50,5 +66,6 @@ typedef struct wolf_s {
 int connect_callbacks(wolf_t *wolf);
 int destroy_return_int(int RET_CODE, wolf_t *wolf);
 void *destroy_return_null(wolf_t *wolf);
+int create_classes(wolf_t *wolf);
 
 #endif

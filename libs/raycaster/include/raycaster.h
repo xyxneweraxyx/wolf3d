@@ -200,7 +200,7 @@ Creates a raycast_t object filled with default parameters.
 The map must be null-terminated.
 Returns the object on success, or NULL on fail.
 */
-raycast_t *raycast_create(char **map, ray_twod_t origin);
+raycast_t *raycast_create(char **map, ray_twod_t *origin);
 
 /*
 Destroys a raycast_t object.
