@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2025
 ** player
 ** File description:
-** The player class of wolf3d.
+** The item class of wolf3d.
 */
 
 #ifndef ITEM_CLASS
@@ -45,7 +45,6 @@ typedef struct item_s {
     float detection_radius;
     float detection_angle;
 
-    bool is_in_radius;
     size_t closest_index;
 
 } item_t;
@@ -60,6 +59,7 @@ float item_getdetectionradius(entity_t *entity);
 float item_getdetectionangle(entity_t *entity);
 
 /// SET methods
+size_t item_setdefault(entity_t *entity);
 size_t item_setsprite(entity_t *entity, sfSprite *sprite);
 size_t item_settexture(entity_t *entity, sfTexture *texture);
 size_t item_setstate(entity_t *entity, item_state_t state);
@@ -67,7 +67,7 @@ size_t item_setdetectionradius(entity_t *entity, float radius);
 size_t item_setdetectionangle(entity_t *entity, float angle);
 
 /// GAMEPLAY methods
-size_t item_gpclosest(entity_t *entity); // Also sets is_in_radius
-size_t item_gppickup(entity_t *entity, size_t index); // with sanity checks
+size_t item_gpclosest(entity_t *entity); // Also sets is_in_radius if the closest is detectable
+size_t item_gppickup(entity_t *entity, size_t index); // with sanity checks based on radius, angle, and closest.
 
 #endif

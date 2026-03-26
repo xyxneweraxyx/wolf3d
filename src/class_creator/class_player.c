@@ -5,9 +5,9 @@
 ** Class creator at initialization.
 */
 
-#include "./../include/wolf3d.h"
+#include "./../../include/wolf3d.h"
 
-static int create_players(wolf_t *wolf)
+size_t create_players(wolf_t *wolf)
 {
     class_t *class = classhandler_classcreate(wolf->classhandler,
         sizeof(player_t), CLASS_PLAYERS);
@@ -20,19 +20,6 @@ static int create_players(wolf_t *wolf)
     if (!player)
         return WOLF_FAIL;
     if (player_setdefault(player))
-        return WOLF_FAIL;
-    return WOLF_SUCC;
-}
-
-int create_classes(wolf_t *wolf)
-{
-    classhandler_t *classhandler = classhandler_init();
-
-    if (!classhandler)
-        return WOLF_FAIL;
-    wolf->classhandler = classhandler;
-    if (!classhandler ||
-        create_players(wolf) == WOLF_FAIL)
         return WOLF_FAIL;
     return WOLF_SUCC;
 }

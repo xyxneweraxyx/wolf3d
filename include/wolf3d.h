@@ -27,21 +27,29 @@
     // Classes
     #include "./../classes/player/include/player.h"
     #include "./../classes/enemy/include/enemy.h"
+    #include "./../classes/item/include/item.h"
+    #include "./../classes/inventory/include/inventory.h"
 
-    // Return codes
+    /// Return codes
     #define WOLF_SUCC 0
     #define WOLF_FAIL 84
 
-    // Buffer lengths
+    /// Buffer lengths
     #define BUFF_LEN_NAME 32
 
-    // Default parameter values
+    /// Default parameter values
     #define PARAMS_DEFAULT_NAME "Jean marc" // jai que ca a foutre
 
-    // Classes definition
-    #define CLASS_PLAYERS "players"
+    /// Classes definition
+    #define CLASS_PLAYERS "player"
+    #define CLASS_ENEMY "enemy"
+    #define CLASS_INVENTORY "inventory"
+    #define CLASS_ITEM "item"
 
-    // Csfml assets
+    /// Item definitions
+    #define ITEM_SCORE "score"
+
+    /// Csfml assets
     #define SFML_TXT_WALL "./assets/textures/wall.jpg"
 
 // Typedefs
