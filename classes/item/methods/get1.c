@@ -38,7 +38,7 @@ item_state_t item_getstate(entity_t *entity)
     if (!entity ||
         !entity->data ||
         sizeof(entity->class->byte_size) != sizeof(entity->data))
-        return NULL;
+        return -1;
     item = (item_t *)entity->data;
     return item->state;
 }

@@ -18,9 +18,10 @@
     #include "./../../../libs/classhandler/include/classhandler.h"
 
     // Defines
-    #define DEFAULT_MAX_ITEM 25
-    #define DEFAULT_DETECTION_RADIUS 0.75
-    #define DEFAULT_DETECTION_ANGLE 90
+    #define ITEM_DEFAULT_MAX_ITEM 25
+    #define ITEM_DEFAULT_DETECTION_RADIUS 0.75
+    #define ITEM_DEFAULT_DETECTION_ANGLE 90
+    #define ITEM_DEFAULT_SPAWN_DELAY 1.0f
 
 // Typedefs
 
@@ -44,6 +45,11 @@ typedef struct item_s {
 
     float detection_radius;
     float detection_angle;
+
+    size_t max_amount;
+    size_t current_amount;
+    float spawn_delay;
+    float since_last_spawn;
 
     size_t closest_index;
 
@@ -69,5 +75,6 @@ size_t item_setdetectionangle(entity_t *entity, float angle);
 /// GAMEPLAY methods
 size_t item_gpclosest(entity_t *entity); // Also sets is_in_radius if the closest is detectable
 size_t item_gppickup(entity_t *entity, size_t index); // with sanity checks based on radius, angle, and closest.
+size_t item_gpspawndelete(entity_t *entity); // If there are any items based on max_item, deletes everything, else it spawns the extras
 
 #endif

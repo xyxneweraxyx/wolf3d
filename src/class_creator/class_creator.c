@@ -6,6 +6,7 @@
 */
 
 #include "./../../include/wolf3d.h"
+#include "./class_creator.h"
 
 int create_classes(wolf_t *wolf)
 {

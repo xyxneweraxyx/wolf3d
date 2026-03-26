@@ -46,7 +46,7 @@ static void movement(wolf_t *wolf, entity_t *plr)
 
 static void jump(entity_t *entity)
 {
-    player_t *data = entity->data;
+    player_t *data = (player_t *)entity->data;
 
     if (!data->jmp_strength) {
         if (sfKeyboard_isKeyPressed(sfKeySpace))

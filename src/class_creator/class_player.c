@@ -6,6 +6,7 @@
 */
 
 #include "./../../include/wolf3d.h"
+#include "./class_creator.h"
 
 size_t create_players(wolf_t *wolf)
 {
